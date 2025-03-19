@@ -10,14 +10,5 @@ jobs:
 
         - name: List and Read files
           run: |
-            echo "My first Github actions job"
-            ls -ltra
-            cat README.md
-            sudo apt-get install cowsay -y
-        
-        - name: Generate ASCII and execute cowsay command
-          run:  | 
-            cowsay -f dragon "Run for cover, Iam a DRAGON-----RAWR" >> dragon.txt
-            grep -i "dragon" dragon.txt
-            cat dragon.txt
-            ls 
+            chmod +x script.sh
+            ./script.sh
