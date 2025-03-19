@@ -1,0 +1,14 @@
+name: CI
+on : push
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+  steps:
+  - name: setup python 3.11
+    uses: action/setup-python@v5
+    with: 
+      python-version: 3.11
+
+  - name: Install dependencies
+    run: |
+      pip install -r requirements.txt
