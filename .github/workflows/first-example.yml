@@ -8,10 +8,16 @@ jobs:
         - name: Checkout stage
           uses: actions/checkout@v4
 
-        - name: welcome message
-          run: echo "My first Github actions job"
-
-        - name: List files
-          run: ls
-        - name: read the files
-          run: cat README.md
+        - name: List and Read files
+          run: |
+            echo "My first Github actions job"
+            ls -ltra
+            cat README.md
+            sudo apt-get install cowsay -y
+        
+        - name: Generate ASCII and execute cowsay command
+          run:  | 
+            cowsay -f dragon "Run for cover, Iam a DRAGON-----RAWR" >> dragon.txt
+            grep -i "dragon" dragon.txt
+            cat dragon.txt
+            ls 
