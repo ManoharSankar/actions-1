@@ -1,10 +1,18 @@
-FROM nginx:1.24-alpine3.17-slim
+# Use Node.js as the base image
+FROM node:16
 
-# Copy everything in the current working directory to the default nginx folder
-COPY . /usr/share/nginx/html
+# Set the working directory inside the container
+WORKDIR /app
 
-# Expose port 80 for HTTP traffic
-EXPOSE 80
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm install
 
-# Add a volume to persist data
-VOLUME /usr/share/nginx/html
+# Copy the rest of the application code
+COPY . .
+
+# Expose the application port
+EXPOSE 3000
+
+# Define the default command
+CMD ["npm", "start"]
